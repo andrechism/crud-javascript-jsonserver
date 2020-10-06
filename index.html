@@ -17,9 +17,10 @@
         <label for="comentario">Digite o comentário:</label>
         <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
       </li>
+
       <li>
-        <label for="imgUrl">Digite o endereço da imagem:</label>
-        <input type="text" name="imgUrl" id="imgUrl">
+        <label for="">Selecione a Imagem:</label>
+        <input type="file" id="imagem" onchange="encodeImageFileAsURL(this)" />
       </li>
     <button type="submit" id="btnEnviar">Enviar</button>
     </ul>

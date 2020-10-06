@@ -1,12 +1,13 @@
 var btnEnviar = document.querySelector('#btnEnviar');
 var listaEventos = document.querySelector('#lista-eventos');
+var imageSelected = '';
 
 function pegarComentario() {
-  let imgUrl = document.querySelector('#imgUrl');
+  let imgUrl = imageSelected;
   let titulo = document.querySelector('#titulo');
   let conteudo = document.querySelector('#comentario');
   let postar = {
-    "imgUrl": imgUrl.value,
+    "imgUrl": imgUrl,
     "titulo": titulo.value,
     "conteudo": conteudo.value
   }
@@ -46,7 +47,7 @@ async function receberComentario() {
       <button id="btnDelete">X</button>
     </header>
     <picture>
-      <img src="${evento.imgUrl}" alt="Imagem" width="200px">
+      <a href="${evento.imgUrl}" target="_blank"><img src="${evento.imgUrl}" alt="Imagem" width="200px"></a>
     </picture>
     <footer>
       <p>${evento.conteudo}</p>
@@ -82,6 +83,19 @@ function addExclusaoEvento(eventos) {
 
 async function deletarEvento() {
   let request = await fetch('https://projeto-pi-digitalhouse.herokuapp.com/eventos', {'method': 'DELETE'});
+}
+
+function encodeImageFileAsURL(element) {
+  console.log(element)
+  var file = element.files[0];
+  var reader = new FileReader();
+  
+  reader.readAsDataURL(file);
+
+  reader.onloadend = function() {
+    imageSelected = reader.result;
+    console.log(imageSelected)
+  }
 }
 
 btnEnviar.addEventListener('click', pegarComentario);
