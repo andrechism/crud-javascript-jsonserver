@@ -1,0 +1,31 @@
+.card {
+  background-color: red;
+}
+
+#lista-eventos {
+  
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.evento {
+  width: 250px;
+  margin: 10px;
+  background-color: red;
+  text-align: center;
+}
+
+.evento header {
+  position: relative;
+}
+
+.evento header button {
+  position: absolute;
+  right: 5px;
+  top: -15px;
+  color: white;
+  font-weight: bold;
+  background-color: black;
+  cursor: pointer;
+}
